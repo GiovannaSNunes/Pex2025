@@ -2,11 +2,11 @@ import tkinter as tk
 from tkinter import messagebox
 from main import principal
 
-COR_BG = "#1e1e1e"         # fundo escuro
-COR_FG = "#ffffff"         # texto branco
-COR_ENTRADA = "#2a2a2a"    # entrada cinza escuro
-COR_BOTAO = "#0077cc"      # azul suave
-COR_BOTAO_HOVER = "#005999" # azul escuro
+COR_BG = "#1e1e1e"         
+COR_FG = "#ffffff"         
+COR_ENTRADA = "#2a2a2a"    
+COR_BOTAO = "#0077cc"      
+COR_BOTAO_HOVER = "#005999" 
 
 
 def ao_passar_mouse(event):
