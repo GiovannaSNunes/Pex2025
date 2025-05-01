@@ -2,6 +2,19 @@ import tkinter as tk
 from tkinter import messagebox
 from main import principal
 
+COR_BG = "#1e1e1e"         # fundo escuro
+COR_FG = "#ffffff"         # texto branco
+COR_ENTRADA = "#2a2a2a"    # entrada cinza escuro
+COR_BOTAO = "#0077cc"      # azul suave
+COR_BOTAO_HOVER = "#005999" # azul escuro
+
+
+def ao_passar_mouse(event):
+    event.widget.config(bg=COR_BOTAO_HOVER)
+
+def ao_sair_mouse(event):
+    event.widget.config(bg=COR_BOTAO)
+
 def executar_relatorio():
     data_inicio = entrada_inicio.get()
     data_fim = entrada_fim.get()
@@ -18,19 +31,25 @@ def executar_relatorio():
 
 janela = tk.Tk()
 janela.title("Relatório de Campanhas - Meta Ads")
-janela.geometry("350x200")
+janela.geometry("400x250")
+janela.configure(bg=COR_BG)
 
-lbl_inicio = tk.Label(janela, text="Data Início (YYYY-MM-DD):")
-lbl_inicio.pack(pady=(10, 0))
-entrada_inicio = tk.Entry(janela, width=30)
-entrada_inicio.pack()
+fonte_padrao = ("Segoe UI", 11)
 
-lbl_fim = tk.Label(janela, text="Data Fim (YYYY-MM-DD):")
-lbl_fim.pack(pady=(10, 0))
-entrada_fim = tk.Entry(janela, width=30)
-entrada_fim.pack()
+lbl_inicio = tk.Label(janela, text="Data Início (AAAA-MM-DD):", bg=COR_BG, fg=COR_FG, font=fonte_padrao)
+lbl_inicio.pack(pady=(15, 5))
+entrada_inicio = tk.Entry(janela, width=25, font=fonte_padrao, bg=COR_ENTRADA, fg=COR_FG, insertbackground=COR_FG, relief="flat")
+entrada_inicio.pack(ipady=6)
 
-btn_gerar = tk.Button(janela, text="Gerar Relatório", command=executar_relatorio)
-btn_gerar.pack(pady=20)
+lbl_fim = tk.Label(janela, text="Data Fim (AAAA-MM-DD):", bg=COR_BG, fg=COR_FG, font=fonte_padrao)
+lbl_fim.pack(pady=(15, 5))
+entrada_fim = tk.Entry(janela, width=25, font=fonte_padrao, bg=COR_ENTRADA, fg=COR_FG, insertbackground=COR_FG, relief="flat")
+entrada_fim.pack(ipady=6)
+
+btn_gerar = tk.Button(janela, text="Gerar Relatório", bg=COR_BOTAO, fg=COR_FG, font=fonte_padrao, relief="flat", activebackground=COR_BOTAO_HOVER, activeforeground=COR_FG, cursor="hand2", command=executar_relatorio)
+btn_gerar.pack(pady=30, ipadx=10, ipady=5)
+
+btn_gerar.bind("<Enter>", ao_passar_mouse)
+btn_gerar.bind("<Leave>", ao_sair_mouse)
 
 janela.mainloop()
