@@ -1,58 +1,72 @@
-# Facebook Campaign Report Automation – Projeto PEX
+# Automação de Relatórios Meta Ads — Projeto PEX 2025
 
-Este projeto coleta dados de campanhas do Meta Ads (Facebook Ads), gera um relatório em Excel, envia um aviso por WhatsApp e encaminha o relatório por e-mail via Outlook. O relatório também é enviado automaticamente para o Google Drive, permitindo integração com dashboards no Looker Studio.
+[![Python](https://img.shields.io/badge/python-3.10+-blue?logo=python)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Status](https://img.shields.io/badge/status-concluído-success)]()
 
-## Funcionalidades
+Automação completa de coleta de dados do Facebook/Meta Ads com geração de relatório em Excel, envio automático por WhatsApp (via WhatsApp Web), e-mail via Outlook e integração com o Google Drive para visualização no Looker Studio.
 
-- Coleta campanhas ativas do Facebook Ads
-- Obtém métricas como impressões, cliques, gasto, alcance, entre outras
-- Gera relatório `.xlsx` com colunas em português
-- Envia aviso automático via WhatsApp
-- Envia o relatório por e-mail com anexo via Outlook
-- Envia automaticamente o relatório para o Google Drive
+## Sobre o projeto
+
+Este projeto foi desenvolvido como parte da PEX 2025 no curso de Análise e Desenvolvimento de Sistemas. O objetivo é demonstrar automação aplicada ao marketing digital, com foco em integração de dados e geração de relatórios.
+
+## Tecnologias utilizadas
+
+- Python 3.10+
+- Facebook Graph API
+- Google Drive API (via PyDrive)
+- PyWhatKit
+- pywin32 (Outlook)
+- python-dotenv
+- tkinter (interface gráfica)
 
 ## Como usar
 
-### 1. Clone o repositório e instale as dependências
+### Executar pela interface gráfica
+
+1. Verifique se o `.env` está corretamente configurado (baseado no `.env.example`).
+
+2. No terminal:
 
 ```bash
-pip install -r requirements.txt
+python interface.py
 ```
 
-### 2. Configure o arquivo `.env`
+3. Uma janela será aberta para preencher as datas. Ao clicar em "Gerar Relatório", o sistema executará todo o processo automaticamente.
 
-Crie um arquivo `.env` com base no modelo abaixo:
-
-```env
-ACCESS_TOKEN=SEU_TOKEN_DO_FACEBOOK
-ACCOUNT_ID=SEU_ID_DE_CONTA
-API_VERSION=vXX.X
-WHATSAPP_NUMBER=+55SEUNUMERO
-EMAIL_DESTINATARIO=seuemail@empresa.com.br
-```
-
-### 3. Configure o acesso ao Google Drive
-
-- Vá até https://console.cloud.google.com/
-- Crie um projeto e ative a API do Google Drive
-- Crie credenciais do tipo "ID do cliente OAuth" (aplicativo para computador)
-- Faça o download do arquivo JSON e salve como `client_secrets.json` na pasta do projeto
-
-### 4. Execute o script
+### Executar via terminal diretamente
 
 ```bash
 python main.py 2025-03-19 2025-03-25
 ```
 
-### 5. Resultado
+## Estrutura
 
-- Um arquivo chamado `relatorio_campanhas_2025-03-19.xlsx` será salvo
-- A mensagem será enviada pelo WhatsApp Web
-- O arquivo será enviado por e-mail via Outlook (desktop)
-- O relatório será enviado para sua conta do Google Drive
+```
+Pex2025/
+├── main.py
+├── dados_facebook.py
+├── interface.py
+├── .env.example
+├── requirements.txt
+├── README.md
+└── client_secrets.json  (não versionar)
+```
 
----
+## Funcionalidades
 
-**Observações:**
-- O WhatsApp Web precisa estar logado na máquina para envio automático
-- O Outlook precisa estar instalado e configurado
+- Coleta de campanhas ativas via API
+- Geração de relatório em Excel
+- Envio automático por WhatsApp Web
+- Envio por e-mail via Outlook (desktop)
+- Upload do relatório para o Google Drive
+- Interface gráfica com Tkinter
+
+## Segurança
+
+- Variáveis sensíveis estão armazenadas no arquivo `.env`, que é ignorado pelo Git
+- O `client_secrets.json` deve ser mantido localmente e fora do versionamento
+
+## Licença
+
+Este projeto está sob a licença MIT. Consulte o arquivo `LICENSE` para mais informações.
