@@ -1,0 +1,6 @@
+pandas
+python-dotenv
+pywhatkit
+pywin32
+pydrive
+requests
